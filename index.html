@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funciones de los Coordinadores de Sede | UNINTEP</title>
+<style>
+  :root{
+    --navy:#0b3d5c;
+    --navy-dark:#082c42;
+    --teal:#0f8a8a;
+    --teal-light:#e6f6f6;
+    --gold:#d9a441;
+    --gray-bg:#f4f6f8;
+    --text:#22303c;
+    --muted:#5b6b78;
+    --white:#ffffff;
+    --border:#dfe6eb;
+    --shadow: 0 4px 14px rgba(11,61,92,0.10);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+    background:var(--gray-bg);
+    color:var(--text);
+    line-height:1.55;
+  }
+  header.hero{
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+    color:#fff;
+    padding:38px 24px 30px;
+    text-align:center;
+    position:relative;
+  }
+  header.hero .tag{
+    display:inline-block;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.35);
+    padding:4px 14px;
+    border-radius:20px;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  header.hero h1{
+    margin:0 0 8px;
+    font-size:clamp(22px,4vw,34px);
+    font-weight:700;
+  }
+  header.hero p{
+    margin:0 auto;
+    max-width:720px;
+    color:#cfe3ec;
+    font-size:15px;
+  }
+  nav.tabs{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--white);
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:4px;
+    padding:10px 12px;
+    border-bottom:1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  nav.tabs button{
+    border:none;
+    background:transparent;
+    padding:10px 16px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--muted);
+    cursor:pointer;
+    border-radius:8px;
+    transition:.15s;
+    white-space:nowrap;
+  }
+  nav.tabs button:hover{ background:var(--teal-light); color:var(--teal);}
+  nav.tabs button.active{ background:var(--navy); color:#fff;}
+
+  main{max-width:980px; margin:0 auto; padding:28px 18px 70px;}
+  section.view{display:none; animation:fade .25s ease;}
+  section.view.active{display:block;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .section-title{
+    display:flex; align-items:center; gap:10px;
+    margin:0 0 6px;
+    font-size:21px;
+    color:var(--navy);
+  }
+  .section-sub{ color:var(--muted); font-size:14px; margin:0 0 22px;}
+
+  /* Cards for institutional context */
+  .grid-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:16px;
+    margin-bottom:26px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:18px 18px;
+    box-shadow:var(--shadow);
+  }
+  .card h3{ margin:0 0 8px; font-size:15px; color:var(--teal); display:flex; gap:8px; align-items:center;}
+  .card p{ margin:0; font-size:13.5px; color:var(--text);}
+
+  .pill-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;}
+  .pill{
+    background:var(--teal-light); color:var(--teal);
+    padding:6px 13px; border-radius:20px; font-size:12.5px; font-weight:600;
+  }
+
+  /* Funciones por area */
+  .area-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-left:5px solid var(--teal);
+    border-radius:10px;
+    margin-bottom:12px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .area-head{
+    display:flex; align-items:center; gap:12px;
+    padding:16px 18px;
+    cursor:pointer;
+  }
+  .area-head .emoji{ font-size:22px;}
+  .area-head .titlewrap{ flex:1;}
+  .area-head h4{ margin:0; font-size:15.5px; color:var(--navy);}
+  .area-head .count{ font-size:12px; color:var(--muted);}
+  .area-head .chev{ color:var(--muted); transition:.25s;}
+  .area-card.open .chev{ transform:rotate(180deg);}
+  .area-body{
+    max-height:0; overflow:hidden; transition:max-height .35s ease;
+    padding:0 18px;
+  }
+  .area-card.open .area-body{ padding:0 18px 16px;}
+
+  /* Progreso / checklist integrado en Funciones por Área */
+  .progress-wrap{
+    background:var(--white); border:1px solid var(--border); border-radius:12px;
+    padding:16px 18px; margin-bottom:20px; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  }
+  .progress-bar-bg{
+    flex:1; min-width:200px; background:#e7edf0; border-radius:20px; height:14px; overflow:hidden;
+  }
+  .progress-bar-fill{
+    height:100%; background:linear-gradient(90deg,var(--teal),var(--navy)); width:0%; transition:width .3s ease;
+  }
+  #progressText{ font-size:13px; font-weight:700; color:var(--navy); white-space:nowrap;}
+  .resetBtn{
+    border:1px solid var(--border); background:var(--white); color:var(--muted);
+    padding:7px 12px; border-radius:8px; cursor:pointer; font-size:12.5px;
+  }
+  .resetBtn:hover{ background:var(--gray-bg);}
+  .check-row{
+    display:flex; gap:10px; align-items:flex-start; padding:9px 0; border-top:1px dashed var(--border); font-size:13.8px;
+  }
+  .check-row:first-child{ border-top:none;}
+  .check-row input[type=checkbox]{ margin-top:3px; width:16px; height:16px; accent-color:var(--teal); flex-shrink:0;}
+  .check-row label.done{ text-decoration:line-through; color:var(--muted);}
+
+  .lineamiento-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-bottom:20px;}
+  .lineamiento-cols .card h3{ color:var(--navy);}
+
+  .badge-area{
+    display:inline-block; font-size:10.5px; font-weight:700; text-transform:uppercase;
+    background:var(--gold); color:#fff; padding:3px 8px; border-radius:6px; margin-bottom:10px; letter-spacing:.5px;
+  }
+  footer{
+    text-align:center; padding:24px; color:var(--muted); font-size:12px;
+  }
+  .searchbox{
+    width:100%; padding:11px 14px; border-radius:10px; border:1px solid var(--border);
+    font-size:14px; margin-bottom:18px; background:var(--white);
+  }
+  .home-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:20px;}
+  .home-tile{
+    background:var(--white); border:1px solid var(--border); border-radius:14px; padding:20px;
+    text-align:center; cursor:pointer; box-shadow:var(--shadow); transition:.15s;
+  }
+  .home-tile:hover{ transform:translateY(-3px); border-color:var(--teal);}
+  .home-tile .big{ font-size:30px; margin-bottom:8px;}
+  .home-tile h4{ margin:0 0 4px; color:var(--navy); font-size:14.5px;}
+  .home-tile p{ margin:0; font-size:12px; color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="tag">Vicerrectoría Académica · UNINTEP</div>
+  <h1>Funciones de los Coordinadores de Sede</h1>
+  <p>Material de socialización interactivo — contexto institucional, modelo pedagógico y funciones operativas para la ampliación de cobertura de nuestros programas.</p>
+</header>
+
+<nav class="tabs">
+  <button class="active" data-view="inicio">🏠 Inicio</button>
+  <button data-view="institucional">🏛️ Contexto Institucional</button>
+  <button data-view="pedagogico">🎓 Modelo Pedagógico</button>
+  <button data-view="funciones">📌 Funciones por Área</button>
+</nav>
+
+<main>
+
+  <!-- INICIO -->
+  <section class="view active" id="inicio">
+    <h2 class="section-title">👋 Bienvenido/a, Coordinador/a de Sede</h2>
+    <p class="section-sub">Con el fin de garantizar el cumplimiento y la calidad en los procesos académicos y administrativos donde UNINTEP hace presencia a través de la ampliación de cobertura de sus programas, esta guía reúne las recomendaciones y compromisos que debe tener en cuenta cada Coordinador de Sede.</p>
+    <div class="home-grid">
+      <div class="home-tile" onclick="showView('institucional')">
+        <div class="big">🏛️</div>
+        <h4>Contexto Institucional</h4>
+        <p>Misión, visión, principios y valores</p>
+      </div>
+      <div class="home-tile" onclick="showView('pedagogico')">
+        <div class="big">🎓</div>
+        <h4>Modelo Pedagógico</h4>
+        <p>Pilares curriculares y lineamientos del semestre</p>
+      </div>
+      <div class="home-tile" onclick="showView('funciones')">
+        <div class="big">📌</div>
+        <h4>Funciones por Área</h4>
+        <p>8 áreas temáticas · marca tu avance con check</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEXTO INSTITUCIONAL -->
+  <section class="view" id="institucional">
+    <h2 class="section-title">🏛️ Contexto Institucional</h2>
+    <p class="section-sub">Objetivo: alinear a los Coordinadores con la identidad y el propósito institucional del UNINTEP.</p>
+
+    <div class="grid-cards">
+      <div class="card">
+        <h3>🎯 Misión</h3>
+        <p>UNINTEP, desde su naturaleza pública como Institución de Educación Terciaria, forma Técnicos Profesionales, Tecnólogos y Profesionales Universitarios, por ciclos propedéuticos. Ciudadanos con habilidades prácticas y capacidades de pensamiento, a través de una educación inclusiva, con pertinencia, enfoque investigativo y de emprendimiento, con el propósito de generar soluciones a los problemas de la comunidad y contribuir al desarrollo sostenible de la región. Todo ello, a través de la conformación de alianzas de aprendizaje, el relacionamiento con el sector externo y una gestión administrativa y financiera soportada por un talento humano competente.</p>
+      </div>
+      <div class="card">
+        <h3>🔭 Visión</h3>
+        <p>Para el año 2033 UNINTEP será una institución universitaria reconocida como líder en la promoción y el posicionamiento de la Educación Terciaria en el Valle del Cauca; contará con programas académicos acreditados de alta calidad; y aportará a incrementar significativamente el acceso y graduación de jóvenes para contribuir a la consolidación de un Valle del Cauca Educado, Productivo y en Paz.</p>
+      </div>
+    </div>
+
+    <div class="pill-row">
+      <span class="pill">Rol estratégico de las sedes en la expansión y calidad</span>
+      <span class="pill">Estructura organizacional</span>
+    </div>
+
+    <h3 class="section-title" style="font-size:18px;">🧭 Principios Institucionales</h3>
+    <div class="grid-cards" id="cards-principios"></div>
+
+    <h3 class="section-title" style="font-size:18px; margin-top:6px;">💎 Valores Institucionales</h3>
+    <div class="grid-cards" id="cards-valores"></div>
+  </section>
+
+  <!-- MODELO PEDAGOGICO -->
+  <section class="view" id="pedagogico">
+    <h2 class="section-title">🎓 Modelo Educativo y Enfoque Pedagógico</h2>
+    <p class="section-sub">La labor educativa no es un acto aislado, sino un proceso estructurado bajo un Modelo Pedagógico Integral a la gestión académica y demás dependencias del UNINTEP. El modelo pedagógico y curricular se fundamenta en cuatro pilares esenciales:</p>
+
+    <div class="grid-cards">
+      <div class="card"><h3>1️⃣ Socio-constructivismo</h3><p>El aprendizaje no es transferencia de información del docente al estudiante, sino un proceso activo y social: los estudiantes construyen conocimiento mediante la interacción con sus pares y su entorno. El docente es facilitador y guía que diseña experiencias de aprendizaje (ABP, trabajo colaborativo, resolución de problemas reales, investigación práctica).</p></div>
+      <div class="card"><h3>2️⃣ Enfoque por competencias</h3><p>La formación se orienta al desarrollo de competencias aplicables al contexto real y al mercado laboral.</p></div>
+      <div class="card"><h3>3️⃣ Resultados de Aprendizaje (RA)</h3><p>La planeación de aula no parte de los temas, sino del Resultado de Aprendizaje; los temas se articulan con las actividades desarrolladas.</p></div>
+      <div class="card"><h3>4️⃣ Ciclos propedéuticos</h3><p>Estructura curricular secuencial y flexible que permite incorporación temprana al mercado laboral: Técnico Profesional → Tecnológico → Profesional Universitario.</p></div>
+    </div>
+
+    <h3 class="section-title" style="font-size:18px;">📅 Lineamientos de gestión académica por etapa del semestre</h3>
+    <div class="lineamiento-cols">
+      <div class="card">
+        <span class="badge-area">Antes de iniciar clases</span>
+        <h3>Planeación</h3>
+        <p>El docente diseña su plan de clase basado estrictamente en los Resultados de Aprendizaje (RA) definidos en el Syllabus y envía el planeador a su unidad.</p>
+      </div>
+      <div class="card">
+        <span class="badge-area">Durante el semestre</span>
+        <h3>Ejecución</h3>
+        <p><b>Primera sesión:</b> socialización obligatoria del Syllabus.<br>
+        <b>Asistencia:</b> se pierde la asignatura con 30% de inasistencia (o 25% según el caso).<br>
+        <b>Evaluación:</b> formativa (retroalimentación constante) y sumativa (tres cortes: 30%, 35%, 35%).<br>
+        <b>Herramientas:</b> uso obligatorio de rúbricas y fomento de la metacognición.<br>
+        <b>Plataforma:</b> el trabajo autónomo se gestiona por Moodle.<br>
+        <b>Registro:</b> ingresar al enlace institucional para registrar la clase con evidencias.</p>
+      </div>
+      <div class="card">
+        <span class="badge-area">Al finalizar</span>
+        <h3>Cierre</h3>
+        <p><b>Habilitaciones:</b> solo para estudiantes con nota final de 2.0 (consultar con la unidad académica).<br>
+        <b>Notas:</b> deben subirse oportunamente al software de registro institucional.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNCIONES POR AREA -->
+  <section class="view" id="funciones">
+    <h2 class="section-title">📌 Funciones del Coordinador de Sede, por Área Temática</h2>
+    <p class="section-sub">Rol de las sedes en el desarrollo territorial. Haz clic en cada área para ver el detalle y marcar las funciones cumplidas. Tu avance se guarda automáticamente en este dispositivo.</p>
+    <input class="searchbox" id="searchFunc" placeholder="🔎 Buscar una función específica (ej. asistencia, matrícula, planillas...)" oninput="filterFunctions()">
+    <div class="progress-wrap">
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+      <span id="progressText">0 / 0 completadas</span>
+      <button class="resetBtn" onclick="resetChecklist()">↺ Reiniciar</button>
+    </div>
+    <div id="areasContainer"></div>
+  </section>
+
+</main>
+
+<footer>UNINTEP · Vicerrectoría Académica · Documento interactivo de socialización para Coordinadores de Sede</footer>
+
+<script>
+// ---------- DATA ----------
+const principios = [
+  {t:"Respeto", d:"Reflejado en la actuación de los miembros de la comunidad académica, orientada dentro de relaciones armónicas fundamentadas hacia sí mismo, al otro y a su entorno."},
+  {t:"Flexibilidad", d:"En los procesos internos, que exigen permanentes transformaciones de acuerdo a las necesidades de la sociedad, para llevar adelante los propósitos de la formación integral de profesionales desde una perspectiva académica y administrativa."},
+  {t:"Calidad", d:"En el cumplimiento de los estándares e indicadores definidos por la institución, en concordancia con los requerimientos del entorno."},
+  {t:"Responsabilidad social", d:"Como compromiso de la institución con los grupos de valor, coadyuvando a la transformación social y ambiental."},
+  {t:"Investigación", d:"En la indagación permanente que permita la construcción y aplicación de conocimientos para la innovación y solución de situaciones problemáticas del contexto."}
+];
+
+const valores = [
+  {t:"Compromiso", d:"Expresado en la importancia del rol que desempeñan los servidores públicos, y en la disposición permanente para comprender y resolver las necesidades de las personas, con las que se relacionan en las labores cotidianas, buscando el mejoramiento de su bienestar."},
+  {t:"Diligencia", d:"Expresada desde la forma en que se cumple con los deberes, funciones y responsabilidades de los diferentes cargos, de la mejor manera posible, con atención, prontitud y eficiencia, para optimizar el uso de los recursos del estado."},
+  {t:"Honestidad", d:"Expresada en la coherencia entre las acciones y los requerimientos éticos, sociales y organizacionales promulgados por la comunidad educativa."},
+  {t:"Justicia", d:"Expresada desde la forma en que se actúa con imparcialidad garantizando el derecho de las personas con equidad, igualdad y sin discriminación."},
+  {t:"Liderazgo", d:"Expresado en la capacidad de convocar y desarrollar fuerzas positivas, lo cual permite ser más competitivos."},
+  {t:"Respeto", d:"Expresado como el reconocimiento y trato de manera digna a todas las personas, con aceptación de las diferencias."}
+];
+
+const areas = [
+  {
+    id:"admisiones", emoji:"📋", nombre:"Admisiones y Matrícula",
+    items:[
+      "Promover la publicidad y el mercadeo para los programas a ofertar de acuerdo a los lineamientos institucionales.",
+      "Recepcionar los requisitos exigidos para el proceso de inscripción de nuevos estudiantes (documentación completa), remitiendo a la Oficina de órdenes de pago del UNINTEP el reporte de estudiantes inscritos con su información completa de acuerdo a la plantilla y en la fecha establecida, con el fin de expedir el recibo de inscripción y posteriormente el de matrícula.",
+      "Verificar que los asistentes a clases estén MATRICULADOS (financiera y académicamente). Reportar estudiantes que asisten y no están en los listados oficiales, y estudiantes que están en el listado pero no asisten (informe de deserción; el estudiante debe enviar carta de cancelación del semestre para evitar quedar en bajo rendimiento)."
+    ]
+  },
+  {
+    id:"seguimiento", emoji:"📊", nombre:"Seguimiento Académico y Estudiantil",
+    items:[
+      "Mantener actualizada la base de datos de los estudiantes, por grupo y por programa, con información personal básica y datos de contacto (celular y correo institucional y personal) para una comunicación oportuna.",
+      "Solicitar a la Unidad correspondiente los resúmenes sobre el estado académico de los estudiantes con el fin de informar a tiempo a cada estudiante la situación actual.",
+      "Programar habilitaciones de acuerdo con el calendario académico.",
+      "Realizar seguimiento a estudiantes frente a situaciones académicas (ausencia, deserción, rendimiento) y comportamentales (actitud, relaciones interpersonales y grupales), reportándolas a la unidad correspondiente para generar procesos de intervención y prevenir la deserción.",
+      "Al final del semestre, solicitar el formato de socialización de notas a la sede Roldanillo, recolectar las planillas de calificaciones y entregarlas a la respectiva Unidad Académica."
+    ]
+  },
+  {
+    id:"docente", emoji:"👨‍🏫", nombre:"Gestión Docente",
+    items:[
+      "Verificar diariamente la asistencia a clase de los docentes y el cumplimiento de la jornada académica según los horarios establecidos; reportar inasistencias a la Unidad Académica respectiva.",
+      "Mantener contacto permanente con los docentes para conocer con anticipación las necesidades logísticas de sus clases: sala de cómputo, videoproyectores, software especializado, entre otros.",
+      "Garantizar que, el primer día de clase, cada docente diligencie el Formato Acuerdo de Aula y socialice el Syllabus; debe ser digitalizado y cargado en el enlace habilitado por cada Unidad Académica.",
+      "Realizar de manera mensual el reporte de horas dictadas por cada docente según el control de asistencia, en las fechas y formato indicados por la Unidad Académica (generalmente antes del día 9 de cada mes)."
+    ]
+  },
+  {
+    id:"bienestar", emoji:"🤝", nombre:"Bienestar y Convivencia",
+    items:[
+      "Coordinar con el equipo de Bienestar Universitario los conversatorios de seguimiento.",
+      "Coordinar (con Bienestar Universitario) la elección del representante de cada grupo y mantener comunicación constante con cada representante para el manejo de situaciones que se presenten en el desarrollo académico.",
+      "Tener conocimiento y desarrollar la programación de los cursos de bienestar, tutorías, habilitaciones, cursos de nivelación y demás programas complementarios."
+    ]
+  },
+  {
+    id:"recursos", emoji:"🏫", nombre:"Recursos e Infraestructura",
+    items:[
+      "Verificar antes de iniciar las clases que los salones cuenten con energía, aseo y los recursos de aprendizaje solicitados por los docentes.",
+      "Hacerse cargo y velar por el buen estado de los bienes y activos que reposan en la sede, reportando las necesidades y daños que se presenten."
+    ]
+  },
+  {
+    id:"reportes", emoji:"📝", nombre:"Reportes e Informes",
+    items:[
+      "Reportar a tiempo y por escrito a la Unidad Académica respectiva, con copia a vice.academica@intep.edu.co, cualquier inquietud de índole personal, académica o de logística por parte de estudiantes, docentes o coordinación, para responder con soluciones concretas e inmediatas en lo posible."
+    ]
+  },
+  {
+    id:"reuniones", emoji:"📅", nombre:"Reuniones y Disponibilidad Institucional",
+    items:[
+      "Asistir a todas las reuniones programadas por la institución y estar presto a atender cualquier situación que se presente durante el desarrollo del semestre.",
+      "Estar presente durante todo el desarrollo de las jornadas de clases de acuerdo con la oferta de los programas de la respectiva sede."
+    ]
+  },
+  {
+    id:"normativo", emoji:"⚖️", nombre:"Normativo",
+    items:[
+      "Tener conocimiento del Reglamento Estudiantil del UNINTEP, disponible para consulta en la página web institucional www.intep.edu.co."
+    ]
+  }
+];
+
+// ---------- TABS ----------
+function showView(view){
+  document.querySelectorAll('section.view').forEach(s=>s.classList.remove('active'));
+  document.getElementById(view).classList.add('active');
+  document.querySelectorAll('nav.tabs button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.view===view);
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.querySelectorAll('nav.tabs button').forEach(b=>{
+  b.addEventListener('click', ()=>showView(b.dataset.view));
+});
+
+// ---------- CARD BUILDERS (principios / valores) ----------
+function buildCards(containerId, data){
+  const c = document.getElementById(containerId);
+  c.innerHTML = data.map(d=>`
+    <div class="card">
+      <h3>${d.t}</h3>
+      <p>${d.d}</p>
+    </div>
+  `).join('');
+}
+buildCards('cards-principios', principios);
+buildCards('cards-valores', valores);
+
+// ---------- CHECKLIST STATE (persistido en este dispositivo) ----------
+const STORAGE_KEY = 'intep_coord_checklist_v1';
+function loadState(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; }
+}
+function saveState(state){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+// ---------- FUNCIONES POR AREA (con checklist integrado) ----------
+function buildAreas(filterText=""){
+  const container = document.getElementById('areasContainer');
+  const f = filterText.trim().toLowerCase();
+  const state = loadState();
+  container.innerHTML = areas.map((a,ai)=>{
+    const filteredIdx = a.items
+      .map((it,ii)=>({it,ii}))
+      .filter(o=> f ? o.it.toLowerCase().includes(f) : true);
+    if(f && filteredIdx.length===0) return '';
+    const doneCount = a.items.filter((it,ii)=> state[`${ai}-${ii}`]).length;
+    return `
+    <div class="area-card ${f? 'open':''}" id="area-${ai}">
+      <div class="area-head" onclick="toggleArea(${ai})">
+        <span class="emoji">${a.emoji}</span>
+        <div class="titlewrap">
+          <h4>${a.nombre}</h4>
+          <span class="count">${doneCount} / ${a.items.length} completadas</span>
+        </div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="area-body">
+        ${filteredIdx.map(o=>{
+          const key = `${ai}-${o.ii}`;
+          const checked = !!state[key];
+          return `<div class="check-row">
+            <input type="checkbox" id="chk-${key}" ${checked?'checked':''} onchange="toggleCheck('${key}')">
+            <label for="chk-${key}" class="${checked?'done':''}" id="lbl-${key}">${o.it}</label>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }).join('');
+  // fix max-height for opened ones after render
+  areas.forEach((a,ai)=>{
+    const card = document.getElementById('area-'+ai);
+    if(card && card.classList.contains('open')){
+      const body = card.querySelector('.area-body');
+      body.style.maxHeight = body.scrollHeight+30+'px';
+    }
+  });
+  updateProgress();
+}
+function toggleArea(ai){
+  const card = document.getElementById('area-'+ai);
+  const open = card.classList.contains('open');
+  card.classList.toggle('open', !open);
+  const body = card.querySelector('.area-body');
+  body.style.maxHeight = (!open) ? body.scrollHeight+30+'px' : 0;
+}
+function toggleCheck(key){
+  const state = loadState();
+  state[key] = !state[key];
+  saveState(state);
+  const lbl = document.getElementById('lbl-'+key);
+  lbl.classList.toggle('done', state[key]);
+  updateProgress();
+  // actualizar contador de la tarjeta de área correspondiente
+  const ai = key.split('-')[0];
+  const area = areas[ai];
+  const doneCount = area.items.filter((it,ii)=> state[`${ai}-${ii}`]).length;
+  const countEl = document.querySelector(`#area-${ai} .count`);
+  if(countEl) countEl.textContent = `${doneCount} / ${area.items.length} completadas`;
+}
+function updateProgress(){
+  const state = loadState();
+  let total = 0, done = 0;
+  areas.forEach((a,ai)=> a.items.forEach((it,ii)=>{
+    total++;
+    if(state[`${ai}-${ii}`]) done++;
+  }));
+  document.getElementById('progressText').textContent = `${done} / ${total} completadas`;
+  document.getElementById('progressFill').style.width = total? (done/total*100)+'%' : '0%';
+}
+function filterFunctions(){
+  buildAreas(document.getElementById('searchFunc').value);
+}
+function resetChecklist(){
+  if(confirm('¿Reiniciar todo el checklist de funciones?')){
+    localStorage.removeItem(STORAGE_KEY);
+    buildAreas(document.getElementById('searchFunc').value);
+  }
+}
+buildAreas();
+</script>
+
+</body>
+</html>
