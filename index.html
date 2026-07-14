@@ -200,37 +200,37 @@
 
 <header class="hero">
   <div class="tag">Vicerrectoría Académica · UNINTEP</div>
-  <h1>Funciones de los Coordinadores de Sede</h1>
+  <h1>Funciones de los Coordinadores de sede</h1>
   <p>Material de socialización interactivo — contexto institucional, modelo pedagógico y funciones operativas para la ampliación de cobertura de nuestros programas.</p>
 </header>
 
 <nav class="tabs">
   <button class="active" data-view="inicio">🏠 Inicio</button>
-  <button data-view="institucional">🏛️ Contexto Institucional</button>
-  <button data-view="pedagogico">🎓 Modelo Pedagógico</button>
-  <button data-view="funciones">📌 Funciones por Área</button>
+  <button data-view="institucional">🏛️ Contexto institucional</button>
+  <button data-view="pedagogico">🎓 Modelo pedagógico</button>
+  <button data-view="funciones">📌 Funciones por área</button>
 </nav>
 
 <main>
 
   <!-- INICIO -->
   <section class="view active" id="inicio">
-    <h2 class="section-title">👋 Bienvenido/a, Coordinador/a de Sede</h2>
+    <h2 class="section-title">👋 Bienvenido/a, Coordinador/a </h2>
     <p class="section-sub">Con el fin de garantizar el cumplimiento y la calidad en los procesos académicos y administrativos donde UNINTEP hace presencia a través de la ampliación de cobertura de sus programas, esta guía reúne las recomendaciones y compromisos que debe tener en cuenta cada Coordinador de Sede.</p>
     <div class="home-grid">
       <div class="home-tile" onclick="showView('institucional')">
         <div class="big">🏛️</div>
-        <h4>Contexto Institucional</h4>
+        <h4>Contexto institucional</h4>
         <p>Misión, visión, principios y valores</p>
       </div>
       <div class="home-tile" onclick="showView('pedagogico')">
         <div class="big">🎓</div>
-        <h4>Modelo Pedagógico</h4>
+        <h4>Modelo pedagógico</h4>
         <p>Pilares curriculares y lineamientos del semestre</p>
       </div>
       <div class="home-tile" onclick="showView('funciones')">
         <div class="big">📌</div>
-        <h4>Funciones por Área</h4>
+        <h4>Funciones por área</h4>
         <p>8 áreas temáticas · marca tu avance con check</p>
       </div>
     </div>
@@ -238,7 +238,7 @@
 
   <!-- CONTEXTO INSTITUCIONAL -->
   <section class="view" id="institucional">
-    <h2 class="section-title">🏛️ Contexto Institucional</h2>
+    <h2 class="section-title">🏛️ Contexto institucional</h2>
     <p class="section-sub">Objetivo: alinear a los Coordinadores con la identidad y el propósito institucional del UNINTEP.</p>
 
     <div class="grid-cards">
@@ -257,16 +257,16 @@
       <span class="pill">Estructura organizacional</span>
     </div>
 
-    <h3 class="section-title" style="font-size:18px;">🧭 Principios Institucionales</h3>
+    <h3 class="section-title" style="font-size:18px;">🧭 Principios institucionales</h3>
     <div class="grid-cards" id="cards-principios"></div>
 
-    <h3 class="section-title" style="font-size:18px; margin-top:6px;">💎 Valores Institucionales</h3>
+    <h3 class="section-title" style="font-size:18px; margin-top:6px;">💎 Valores institucionales</h3>
     <div class="grid-cards" id="cards-valores"></div>
   </section>
 
   <!-- MODELO PEDAGOGICO -->
   <section class="view" id="pedagogico">
-    <h2 class="section-title">🎓 Modelo Educativo y Enfoque Pedagógico</h2>
+    <h2 class="section-title">🎓 Modelo educativo y enfoque pedagógico</h2>
     <p class="section-sub">La labor educativa no es un acto aislado, sino un proceso estructurado bajo un Modelo Pedagógico Integral a la gestión académica y demás dependencias del UNINTEP. El modelo pedagógico y curricular se fundamenta en cuatro pilares esenciales:</p>
 
     <div class="grid-cards">
@@ -304,7 +304,7 @@
 
   <!-- FUNCIONES POR AREA -->
   <section class="view" id="funciones">
-    <h2 class="section-title">📌 Funciones del Coordinador de Sede, por Área Temática</h2>
+    <h2 class="section-title">📌 Funciones del Coordinador de Sede, por área temática</h2>
     <p class="section-sub">Rol de las sedes en el desarrollo territorial. Haz clic en cada área para ver el detalle y marcar las funciones cumplidas. Tu avance se guarda automáticamente en este dispositivo.</p>
     <input class="searchbox" id="searchFunc" placeholder="🔎 Buscar una función específica (ej. asistencia, matrícula, planillas...)" oninput="filterFunctions()">
     <div class="progress-wrap">
@@ -340,7 +340,7 @@ const valores = [
 
 const areas = [
   {
-    id:"admisiones", emoji:"📋", nombre:"Admisiones y Matrícula",
+    id:"admisiones", emoji:"📋", nombre:"Admisiones y matrícula",
     items:[
       "Promover la publicidad y el mercadeo para los programas a ofertar de acuerdo a los lineamientos institucionales.",
       "Recepcionar los requisitos exigidos para el proceso de inscripción de nuevos estudiantes (documentación completa), remitiendo a la Oficina de órdenes de pago del UNINTEP el reporte de estudiantes inscritos con su información completa de acuerdo a la plantilla y en la fecha establecida, con el fin de expedir el recibo de inscripción y posteriormente el de matrícula.",
@@ -348,7 +348,7 @@ const areas = [
     ]
   },
   {
-    id:"seguimiento", emoji:"📊", nombre:"Seguimiento Académico y Estudiantil",
+    id:"seguimiento", emoji:"📊", nombre:"Seguimiento académico y estudiantil",
     items:[
       "Mantener actualizada la base de datos de los estudiantes, por grupo y por programa, con información personal básica y datos de contacto (celular y correo institucional y personal) para una comunicación oportuna.",
       "Solicitar a la Unidad correspondiente los resúmenes sobre el estado académico de los estudiantes con el fin de informar a tiempo a cada estudiante la situación actual.",
@@ -358,7 +358,7 @@ const areas = [
     ]
   },
   {
-    id:"docente", emoji:"👨‍🏫", nombre:"Gestión Docente",
+    id:"docente", emoji:"👨‍🏫", nombre:"Gestión docente",
     items:[
       "Verificar diariamente la asistencia a clase de los docentes y el cumplimiento de la jornada académica según los horarios establecidos; reportar inasistencias a la Unidad Académica respectiva.",
       "Mantener contacto permanente con los docentes para conocer con anticipación las necesidades logísticas de sus clases: sala de cómputo, videoproyectores, software especializado, entre otros.",
@@ -367,7 +367,7 @@ const areas = [
     ]
   },
   {
-    id:"bienestar", emoji:"🤝", nombre:"Bienestar y Convivencia",
+    id:"bienestar", emoji:"🤝", nombre:"Bienestar y convivencia",
     items:[
       "Coordinar con el equipo de Bienestar Universitario los conversatorios de seguimiento.",
       "Coordinar (con Bienestar Universitario) la elección del representante de cada grupo y mantener comunicación constante con cada representante para el manejo de situaciones que se presenten en el desarrollo académico.",
@@ -375,20 +375,20 @@ const areas = [
     ]
   },
   {
-    id:"recursos", emoji:"🏫", nombre:"Recursos e Infraestructura",
+    id:"recursos", emoji:"🏫", nombre:"Recursos e infraestructura",
     items:[
       "Verificar antes de iniciar las clases que los salones cuenten con energía, aseo y los recursos de aprendizaje solicitados por los docentes.",
       "Hacerse cargo y velar por el buen estado de los bienes y activos que reposan en la sede, reportando las necesidades y daños que se presenten."
     ]
   },
   {
-    id:"reportes", emoji:"📝", nombre:"Reportes e Informes",
+    id:"reportes", emoji:"📝", nombre:"Reportes e informes",
     items:[
       "Reportar a tiempo y por escrito a la Unidad Académica respectiva, con copia a vice.academica@intep.edu.co, cualquier inquietud de índole personal, académica o de logística por parte de estudiantes, docentes o coordinación, para responder con soluciones concretas e inmediatas en lo posible."
     ]
   },
   {
-    id:"reuniones", emoji:"📅", nombre:"Reuniones y Disponibilidad Institucional",
+    id:"reuniones", emoji:"📅", nombre:"Reuniones y disponibilidad institucional",
     items:[
       "Asistir a todas las reuniones programadas por la institución y estar presto a atender cualquier situación que se presente durante el desarrollo del semestre.",
       "Estar presente durante todo el desarrollo de las jornadas de clases de acuerdo con la oferta de los programas de la respectiva sede."
@@ -397,7 +397,7 @@ const areas = [
   {
     id:"normativo", emoji:"⚖️", nombre:"Normativo",
     items:[
-      "Tener conocimiento del Reglamento Estudiantil del UNINTEP, disponible para consulta en la página web institucional www.intep.edu.co."
+      "Tener conocimiento del Reglamento Estudiantil del UNINTEP, disponible para consulta en la página web institucional www.intep.edu.co"
     ]
   }
 ];
