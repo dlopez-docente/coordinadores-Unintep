@@ -338,17 +338,17 @@
     <p class="section-sub">Con el fin de garantizar el cumplimiento y la calidad en los procesos académicos y administrativos donde UNINTEP hace presencia a través de la ampliación de cobertura de sus programas, esta guía reúne las recomendaciones y compromisos que debe tener en cuenta cada Coordinador de Sede.</p>
     <div class="home-grid" style="margin-bottom:30px;">
       <div class="home-tile home-tile-illustrated" onclick="showView('academica')">
-        <img class="home-tile-img" src="assets/tile-gestion-academica.png" alt="">
+        <img class="home-tile-img" src="tile-gestion-academica.png" alt="">
         <h4>Gestión Académica</h4>
         <p>Línea de tiempo del semestre e instructivos pedagógicos</p>
       </div>
       <div class="home-tile home-tile-illustrated" onclick="showView('plan-trabajo')">
-        <img class="home-tile-img" src="assets/tile-plan-trabajo.png" alt="">
+        <img class="home-tile-img" src="tile-plan-trabajo.png" alt="">
         <h4>Mi Plan de Trabajo</h4>
         <p>8 áreas temáticas · marca tu avance con check</p>
       </div>
       <div class="home-tile home-tile-illustrated" onclick="showView('recursos')">
-        <img class="home-tile-img" src="assets/tile-centro-recursos.png" alt="">
+        <img class="home-tile-img" src="tile-centro-recursos.png" alt="">
         <h4>Centro de Recursos</h4>
         <p>Formatos, Moodle, software de notas y reglamento</p>
       </div>
@@ -565,7 +565,7 @@
 
 <!-- CONTENEDOR DE REPORTE (solo se muestra al imprimir/descargar el PDF) -->
 <div id="printReport">
-  <div class="rp-header"><img src="assets/membrete-header.png" alt="Membrete UNINTEP"></div>
+  <div class="rp-header"><img src="membrete-header.png" alt="Membrete UNINTEP"></div>
   <div class="rp-body">
     <div class="rp-title">
       <h1>Reporte de Cumplimiento — Coordinador de Sede</h1>
@@ -584,7 +584,7 @@
   </div>
   <div class="rp-footer">
     <p class="rp-footer-note">Reporte generado automáticamente desde el Portal del Coordinador de Sede · UNINTEP</p>
-    <img src="assets/membrete-footer.png" alt="Pie de página UNINTEP">
+    <img src="membrete-footer.png" alt="Pie de página UNINTEP">
   </div>
 </div>
 
@@ -610,14 +610,14 @@ const valores = [
 
 // ---------- ICONOS SVG (sustituyen los emojis genéricos) ----------
 const MASCOT_ICONS = {
-  admisiones: '<img src="assets/mascota-admisiones.png" alt="">',
-  seguimiento: '<img src="assets/mascota-seguimiento.png" alt="">',
-  docente: '<img src="assets/mascota-docente.png" alt="">',
-  bienestar: '<img src="assets/mascota-bienestar.png" alt="">',
-  recursos: '<img src="assets/mascota-recursos.png" alt="">',
-  reportes: '<img src="assets/mascota-reportes.png" alt="">',
-  reuniones: '<img src="assets/mascota-reuniones.png" alt="">',
-  normativo: '<img src="assets/mascota-normativo.png" alt="">'
+  admisiones: '<img src="mascota-admisiones.png" alt="">',
+  seguimiento: '<img src="mascota-seguimiento.png" alt="">',
+  docente: '<img src="mascota-docente.png" alt="">',
+  bienestar: '<img src="mascota-bienestar.png" alt="">',
+  recursos: '<img src="mascota-recursos.png" alt="">',
+  reportes: '<img src="mascota-reportes.png" alt="">',
+  reuniones: '<img src="mascota-reuniones.png" alt="">',
+  normativo: '<img src="mascota-normativo.png" alt="">'
 };
 function areaIcon(id, cls=''){
   return `<span class="mascot-badge ${cls}">${MASCOT_ICONS[id]||''}</span>`;
