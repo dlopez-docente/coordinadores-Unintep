@@ -171,6 +171,17 @@
   .area-detail .detail-content{ flex:1 1 240px; min-width:200px;}
   .area-detail .detail-sub{ font-size:12.5px; color:var(--muted); margin:2px 0 12px;}
 
+  /* Guía de proceso paso a paso (ej. Inscripción de Aspirantes) */
+  .proceso-guide{
+    margin-top:16px; padding-top:14px; border-top:1px dashed var(--border);
+  }
+  .proceso-guide h5{
+    margin:0 0 10px; font-size:13.5px; color:var(--navy); font-weight:700;
+  }
+  .proceso-steps{ margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px;}
+  .proceso-steps li{ font-size:13px; color:var(--text);}
+  .proceso-steps li b{ color:var(--teal);}
+
   /* Iconografía institucional (SVG en círculo de acento) */
   .icon-badge{
     width:38px; height:38px; border-radius:50%;
@@ -320,7 +331,7 @@
   <div class="tag">Vicerrectoría Académica · UNINTEP</div>
   <h1>Funciones de los Coordinadores de sede</h1>
   <p>Material de socialización interactivo — contexto institucional, modelo pedagógico y funciones operativas para la ampliación de cobertura de nuestros programas.</p>
-  <img class="hero-char hero-char-right" src="" alt="">
+  <img class="hero-char hero-char-right" src="header-hombre.png" alt="">
 </header>
 
 <nav class="tabs">
@@ -630,7 +641,17 @@ const areas = [
       "Promover la publicidad y el mercadeo para los programas a ofertar de acuerdo a los lineamientos institucionales.",
       "Recepcionar los requisitos exigidos para el proceso de inscripción de nuevos estudiantes (documentación completa), remitiendo a la Oficina de órdenes de pago del UNINTEP el reporte de estudiantes inscritos con su información completa de acuerdo a la plantilla y en la fecha establecida, con el fin de expedir el recibo de inscripción y posteriormente el de matrícula.",
       "Verificar que los asistentes a clases estén MATRICULADOS (financiera y académicamente). Reportar estudiantes que asisten y no están en los listados oficiales, y estudiantes que están en el listado pero no asisten (informe de deserción; el estudiante debe enviar carta de cancelación del semestre para evitar quedar en bajo rendimiento)."
-    ]
+    ],
+    proceso:{
+      titulo:"Proceso de Inscripción de Aspirantes",
+      pasos:[
+        {t:"Brindar la información al aspirante", d:"Se informa al aspirante sobre los requisitos y costos del proceso de inscripción, recordando que la documentación debe entregarse completa, ya que este es el requisito para dar inicio al proceso."},
+        {t:"Diligenciar el formulario físico", d:"El aspirante debe diligenciar el formulario físico de forma completa, clara y legible, evitando tachones, enmendaduras o información incompleta."},
+        {t:"Realizar la inscripción en la plataforma virtual", d:"Se registra al aspirante en la plataforma de inscripción virtual. La información ingresada debe ser exactamente la misma que aparece en el formulario físico."},
+        {t:"Cargar la documentación digital", d:"Se suben los documentos escaneados uno por uno, en formato PDF, verificando que sean completamente legibles. La fotografía del aspirante debe cargarse en formato JPG, con buena calidad y nitidez."},
+        {t:"Sincronizar la inscripción", d:"Una vez validada toda la documentación física y digital, se realiza la sincronización del aspirante en el sistema, quedando su estado registrado oficialmente como inscrito."}
+      ]
+    }
   },
   {
     id:"seguimiento", emoji:"📊", nombre:"Seguimiento académico y estudiantil",
@@ -785,6 +806,13 @@ function renderAreaDetail(ai, f=""){
     .map((it,ii)=>({it,ii}))
     .filter(o=> f ? o.it.toLowerCase().includes(f) : true);
   const doneCount = a.items.filter((it,ii)=> state[`${ai}-${ii}`]).length;
+  const procesoHtml = a.proceso ? `
+    <div class="proceso-guide">
+      <h5>📝 ${a.proceso.titulo}</h5>
+      <ol class="proceso-steps">
+        ${a.proceso.pasos.map(p=>`<li><b>${p.t}.</b> ${p.d}</li>`).join('')}
+      </ol>
+    </div>` : '';
   panel.classList.add('open');
   panel.innerHTML = `
     <h4 class="detail-title">${a.nombre}</h4>
@@ -800,6 +828,7 @@ function renderAreaDetail(ai, f=""){
             <label for="chk-${key}" class="${checked?'done':''}" id="lbl-${key}">${o.it}</label>
           </div>`;
         }).join('') || '<p class="detail-sub">Sin coincidencias para tu búsqueda en esta área.</p>'}
+        ${procesoHtml}
       </div>
     </div>
   `;
