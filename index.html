@@ -682,6 +682,7 @@ const valores = [
 // ---------- ICONOS SVG (sustituyen los emojis genéricos) ----------
 const MASCOT_ICONS = {
   admisiones: '<img src="mascota-admisiones.png" alt="">',
+  matricula: '<img src="mascota-matricula.png" alt="">',
   seguimiento: '<img src="mascota-seguimiento.png" alt="">',
   docente: '<img src="mascota-docente.png" alt="">',
   bienestar: '<img src="mascota-bienestar.png" alt="">',
@@ -696,7 +697,7 @@ function areaIcon(id, cls=''){
 
 const areas = [
   {
-    id:"admisiones", emoji:"📋", nombre:"Admisiones y matrícula",
+    id:"admisiones", emoji:"📋", nombre:"Admisiones",
     items:[
       "Promover la publicidad y el mercadeo para los programas a ofertar de acuerdo a los lineamientos institucionales.",
       "Brindar la información al aspirante: informar sobre los requisitos y costos del proceso de inscripción, recordando que la documentación debe entregarse completa, ya que este es el requisito para dar inicio al proceso.",
@@ -706,6 +707,16 @@ const areas = [
       "Realizar la inscripción en la plataforma virtual: la información ingresada debe ser exactamente la misma que aparece en el formulario físico.",
       "Cargar la documentación digital: subir los documentos escaneados uno por uno en formato PDF, verificando que sean completamente legibles; la fotografía del aspirante debe cargarse en formato JPG, con buena calidad y nitidez.",
       "Sincronizar la inscripción: una vez validada toda la documentación física y digital, se realiza la sincronización del aspirante en el sistema, quedando su estado registrado oficialmente como inscrito."
+    ]
+  },
+  {
+    id:"matricula", emoji:"📝", nombre:"Matrícula",
+    items:[
+      "Los estudiantes antiguos que hayan cursado y cumplido académicamente con el 100% de la carga académica matriculada durante el semestre inmediatamente anterior tendrán la renovación de su matrícula de manera automática.",
+      "En caso de que el estudiante presente asignaturas pendientes, deberá solicitar la orden de matrícula a la Unidad Académica correspondiente o al Coordinador de sede; posteriormente, dicha orden deberá ser remitida al área de Órdenes de Pago para generar el respectivo valor de matrícula.",
+      "Los estudiantes que únicamente deban cursar hasta tres (3) asignaturas deberán cancelar el valor establecido en la tabla de Derechos Pecuniarios vigente de UNINTEP, de conformidad con el Reglamento Estudiantil.",
+      "Una vez generado el recibo, el pago de la matrícula podrá realizarse a través de la página web institucional, ingresando a la ruta Servicios en Línea → Pago en Línea; el estudiante deberá digitar su número de documento para consultar y realizar el pago del valor correspondiente por los medios digitales.",
+      "Los estudiantes que, por cualquier motivo, no cumplan con los requisitos establecidos para acceder a la Política de Gratuidad deberán asumir el valor total de la matrícula correspondiente al período académico, de acuerdo con los derechos pecuniarios vigentes."
     ]
   },
   {
