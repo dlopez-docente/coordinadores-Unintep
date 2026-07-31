@@ -337,7 +337,7 @@
 <nav class="tabs">
   <button class="active" data-view="institucion"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/><path d="M4 21h16"/></svg> Conoce tu Institución</button>
   <button data-view="academica"><svg viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 2.5 3 6 3s6-1.5 6-3v-5.5"/></svg> Gestión Académica</button>
-  <button data-view="plan-trabajo"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9h8M8 13l2 2 4-4M8 17h5"/></svg> Mi Plan de Trabajo</button>
+  <button data-view="plan-trabajo"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9h8M8 13l2 2 4-4M8 17h5"/></svg> Plan Estratégico de Gestión</button>
   <button data-view="recursos"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 0 0-6-6l-1 1"/><path d="M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 0 0 6 6l1-1"/></svg> Centro de Recursos</button>
 </nav>
 
@@ -355,7 +355,7 @@
       </div>
       <div class="home-tile home-tile-illustrated" onclick="showView('plan-trabajo')">
         <img class="home-tile-img" src="tile-plan-trabajo.png" alt="">
-        <h4>Mi Plan de Trabajo</h4>
+        <h4>Plan Estratégico de Gestión</h4>
         <p>8 áreas temáticas · marca tu avance con check</p>
       </div>
       <div class="home-tile home-tile-illustrated" onclick="showView('recursos')">
@@ -468,7 +468,7 @@
 
   <!-- MI PLAN DE TRABAJO -->
   <section class="view" id="plan-trabajo">
-    <h2 class="section-title">📌 Funciones del Coordinador de Sede, por área temática</h2>
+    <h2 class="section-title">📌 Plan Estratégico de Gestión</h2>
     <p class="section-sub">Rol de las sedes en el desarrollo territorial. Haz clic en cada área para ver el detalle y marcar las funciones cumplidas. Tu avance se guarda automáticamente en este dispositivo.</p>
     <input class="searchbox" id="searchFunc" placeholder="🔎 Buscar una función específica (ej. asistencia, matrícula, planillas...)" oninput="filterFunctions()">
     <div class="progress-wrap">
@@ -557,9 +557,7 @@
     </div>
 
     <h3 class="section-title" style="font-size:18px;">🎓 Planes de estudio</h3>
-    <p class="section-sub" style="margin-top:-4px;">
-      <span style="display:inline-block; margin-top:6px; background:#f6ecd8; color:var(--gold); padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;">⏳ Pendiente: plan de estudio detallado de la Unidad de Sistemas y Electricidad</span>
-    </p>
+    <p class="section-sub" style="margin-top:-4px;">Programas de las 3 unidades académicas, con su plan de estudio en niveles técnico, tecnológico y profesional.</p>
 
     <p class="section-sub" style="margin-bottom:6px;"><b>Unidad de Ciencias Ambientales y Agropecuaria</b></p>
     <div class="grid-cards">
@@ -598,19 +596,15 @@
     <div class="grid-cards">
       <div class="card">
         <h3>🖥️ Profesional en Diseño Visual Digital</h3>
-        <p>Información del programa (código SNIES 110608). El plan de estudio detallado aún no está enlazado.</p>
-        <a href="https://intep.edu.co/portal/unidad-de-sistemas-y-electricidad/profesional-en-diseno-visual-digital-codigo-snies-110608/" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; background:var(--navy); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">ℹ️ Ver información del programa</a>
-        <!-- TODO: cuando tengas el documento del plan de estudio, agrega aquí un segundo botón igual al de arriba pero con background:var(--teal) y el link real:
-        <a href="AQUI_VA_EL_LINK_PLAN_ESTUDIO_DISENO_VISUAL" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; background:var(--teal); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">📄 Ver plan de estudio</a>
-        -->
+        <p>Plan de estudio del programa, niveles técnico, tecnológico y profesional.</p>
+        <!-- <a href="https://intep.edu.co/portal/unidad-de-sistemas-y-electricidad/profesional-en-diseno-visual-digital-codigo-snies-110608/" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; background:var(--navy); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">ℹ️ Ver información del programa</a> -->
+        <a href="https://docs.google.com/spreadsheets/d/1ysR-VvMiW34sM6PU0sCdObVWna_C1RN3/edit?usp=sharing" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; background:var(--teal); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">📄 Ver plan de estudio</a>
       </div>
       <div class="card">
         <h3>💻 Ingeniería Informática</h3>
-        <p>Información del programa (código SNIES 111554). El plan de estudio detallado aún no está enlazado.</p>
-        <a href="https://intep.edu.co/portal/unidad-de-sistemas-y-electricidad/ingenieria-informatica-snies-111554/" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; background:var(--navy); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">ℹ️ Ver información del programa</a>
-        <!-- TODO: cuando tengas el documento del plan de estudio, agrega aquí un segundo botón igual al de arriba pero con background:var(--teal) y el link real:
-        <a href="AQUI_VA_EL_LINK_PLAN_ESTUDIO_INGENIERIA_INFORMATICA" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; background:var(--teal); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">📄 Ver plan de estudio</a>
-        -->
+        <p>Plan de estudio del programa, niveles técnico, tecnológico y profesional.</p>
+        <!-- <a href="https://intep.edu.co/portal/unidad-de-sistemas-y-electricidad/ingenieria-informatica-snies-111554/" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; background:var(--navy); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">ℹ️ Ver información del programa</a> -->
+        <a href="https://docs.google.com/spreadsheets/d/1ztAsZoXyWHIvYiT_E19YkBwkzRP9O8LS/edit?usp=sharing" target="_blank" rel="noopener" style="display:inline-block; margin-top:8px; background:var(--teal); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">📄 Ver plan de estudio</a>
       </div>
     </div>
   </section>
@@ -684,19 +678,14 @@ const areas = [
     id:"admisiones", emoji:"📋", nombre:"Admisiones y matrícula",
     items:[
       "Promover la publicidad y el mercadeo para los programas a ofertar de acuerdo a los lineamientos institucionales.",
-      "Recepcionar los requisitos exigidos para el proceso de inscripción de nuevos estudiantes (documentación completa), remitiendo a la Oficina de órdenes de pago del UNINTEP el reporte de estudiantes inscritos con su información completa de acuerdo a la plantilla y en la fecha establecida, con el fin de expedir el recibo de inscripción y posteriormente el de matrícula.",
-      "Verificar que los asistentes a clases estén MATRICULADOS (financiera y académicamente). Reportar estudiantes que asisten y no están en los listados oficiales, y estudiantes que están en el listado pero no asisten (informe de deserción; el estudiante debe enviar carta de cancelación del semestre para evitar quedar en bajo rendimiento)."
-    ],
-    proceso:{
-      titulo:"Proceso de Inscripción de Aspirantes",
-      pasos:[
-        {t:"Brindar la información al aspirante", d:"Se informa al aspirante sobre los requisitos y costos del proceso de inscripción, recordando que la documentación debe entregarse completa, ya que este es el requisito para dar inicio al proceso."},
-        {t:"Diligenciar el formulario físico", d:"El aspirante debe diligenciar el formulario físico de forma completa, clara y legible, evitando tachones, enmendaduras o información incompleta."},
-        {t:"Realizar la inscripción en la plataforma virtual", d:"Se registra al aspirante en la plataforma de inscripción virtual. La información ingresada debe ser exactamente la misma que aparece en el formulario físico."},
-        {t:"Cargar la documentación digital", d:"Se suben los documentos escaneados uno por uno, en formato PDF, verificando que sean completamente legibles. La fotografía del aspirante debe cargarse en formato JPG, con buena calidad y nitidez."},
-        {t:"Sincronizar la inscripción", d:"Una vez validada toda la documentación física y digital, se realiza la sincronización del aspirante en el sistema, quedando su estado registrado oficialmente como inscrito."}
-      ]
-    }
+      "Brindar la información al aspirante: informar sobre los requisitos y costos del proceso de inscripción, recordando que la documentación debe entregarse completa, ya que este es el requisito para dar inicio al proceso.",
+      "En la sede principal el proceso de inscripción es dirigido por ventanilla única; en el caso de las sedes, remitir a la Oficina de Órdenes de Pago de UNINTEP el reporte de estudiantes inscritos con su información completa de acuerdo a la plantilla y en la fecha establecida, con el fin de expedir el recibo de inscripción y posteriormente el de matrícula.",
+      "Diligenciar el formulario físico: el aspirante debe hacerlo de forma completa, clara y legible, evitando tachones, enmendaduras o información incompleta.",
+      "Recepcionar los requisitos exigidos para el proceso de inscripción de nuevos estudiantes (documentación completa).",
+      "Realizar la inscripción en la plataforma virtual: la información ingresada debe ser exactamente la misma que aparece en el formulario físico.",
+      "Cargar la documentación digital: subir los documentos escaneados uno por uno en formato PDF, verificando que sean completamente legibles; la fotografía del aspirante debe cargarse en formato JPG, con buena calidad y nitidez.",
+      "Sincronizar la inscripción: una vez validada toda la documentación física y digital, se realiza la sincronización del aspirante en el sistema, quedando su estado registrado oficialmente como inscrito."
+    ]
   },
   {
     id:"seguimiento", emoji:"📊", nombre:"Seguimiento académico y estudiantil",
@@ -705,7 +694,8 @@ const areas = [
       "Solicitar a la Unidad correspondiente los resúmenes sobre el estado académico de los estudiantes con el fin de informar a tiempo a cada estudiante la situación actual.",
       "Programar habilitaciones de acuerdo con el calendario académico.",
       "Realizar seguimiento a estudiantes frente a situaciones académicas (ausencia, deserción, rendimiento) y comportamentales (actitud, relaciones interpersonales y grupales), reportándolas a la unidad correspondiente para generar procesos de intervención y prevenir la deserción.",
-      "Al final del semestre, solicitar el formato de socialización de notas a la sede Roldanillo, recolectar las planillas de calificaciones y entregarlas a la respectiva Unidad Académica."
+      "Al final del semestre, solicitar el formato de socialización de notas a la sede Roldanillo, recolectar las planillas de calificaciones y entregarlas a la respectiva Unidad Académica.",
+      "Verificar que los asistentes a clases estén MATRICULADOS (financiera y académicamente). Reportar estudiantes que asisten y no están en los listados oficiales, y estudiantes que están en el listado pero no asisten (informe de deserción; el estudiante debe enviar carta de cancelación del semestre para evitar quedar en bajo rendimiento)."
     ]
   },
   {
