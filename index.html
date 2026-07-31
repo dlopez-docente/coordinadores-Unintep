@@ -384,6 +384,12 @@
       <span class="pill">Estructura organizacional</span>
     </div>
 
+    <h3 class="section-title" style="font-size:18px;">📘 Proyecto Educativo</h3>
+    <div class="card" style="margin-bottom:20px;">
+      <p>El Proyecto Educativo UNINTEP se fundamenta en el Modelo Pedagógico Socio-Constructivista, el cual se basa en la importancia de considerar la interacción social como eje fundamental del desarrollo humano y el desarrollo cognitivo de los estudiantes. Esto implica un cambio de actitud de directivos, docentes, estudiantes, padres de familia, comunidad y autoridades educativas hacia relaciones de colaboración a través del trabajo común y compartido, llevando a cabo dinámicas colaborativas que promuevan el intercambio de experiencias y saberes previos para ayudar a fortalecer habilidades sociales como la comunicación asertiva, el trabajo en equipo, el compromiso, entre otras más.</p>
+      <p style="margin-top:10px;">Es así como la fundamentación pedagógica de UNINTEP se centra en el enfoque sociocrítico, ya que la formación de profesionales se entiende como una actividad crítica en la cual se le otorga prioridad al desarrollo de competencias y resultados de aprendizaje que forman un profesional reflexivo, con capacidad de pensamiento y acción, de tal manera que esté en capacidad de analizar situaciones problemáticas que se le presentan en su contexto, gracias a la toma de decisiones para la mejora de su profesión.</p>
+    </div>
+
     <h3 class="section-title" style="font-size:18px;">🧭 Principios institucionales</h3>
     <div class="grid-cards" id="cards-principios"></div>
 
@@ -554,6 +560,18 @@
         <a href="AQUI_VA_EL_LINK_PLANILLA_NOTAS" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; background:var(--teal); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">📄 Ver formato</a>
         -->
       </div>
+      <div class="card">
+        <h3>🧭 Guía de prácticas</h3>
+        <p>Instructivo de referencia para el desarrollo de la etapa práctica de los estudiantes.</p>
+        <a href="https://drive.google.com/file/d/1YlUTFTMGlx0-OWlzpMTZXsd_zOSS0WWR/view?usp=sharing" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; background:var(--teal); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">📄 Ver guía</a>
+      </div>
+      <div class="card">
+        <h3>🚌 Gastos de movilidad</h3>
+        <p>Formato para la solicitud y reporte de gastos de movilidad de la coordinación.</p>
+        <!-- TODO: reemplazar este comentario por el link real, con el mismo formato del botón de arriba:
+        <a href="AQUI_VA_EL_LINK_GASTOS_MOVILIDAD" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; background:var(--teal); color:#fff; padding:6px 14px; border-radius:20px; font-size:12.5px; font-weight:700; text-decoration:none;">📄 Ver formato</a>
+        -->
+      </div>
     </div>
 
     <h3 class="section-title" style="font-size:18px;">🎓 Planes de estudio</h3>
@@ -642,20 +660,23 @@
 <script>
 // ---------- DATA ----------
 const principios = [
-  {t:"Respeto", d:"Reflejado en la actuación de los miembros de la comunidad académica, orientada dentro de relaciones armónicas fundamentadas hacia sí mismo, al otro y a su entorno."},
-  {t:"Flexibilidad", d:"En los procesos internos, que exigen permanentes transformaciones de acuerdo a las necesidades de la sociedad, para llevar adelante los propósitos de la formación integral de profesionales desde una perspectiva académica y administrativa."},
-  {t:"Calidad", d:"En el cumplimiento de los estándares e indicadores definidos por la institución, en concordancia con los requerimientos del entorno."},
-  {t:"Responsabilidad social", d:"Como compromiso de la institución con los grupos de valor, coadyuvando a la transformación social y ambiental."},
-  {t:"Investigación", d:"En la indagación permanente que permita la construcción y aplicación de conocimientos para la innovación y solución de situaciones problemáticas del contexto."}
+  {t:"Respeto por la calidad humana", d:"UNINTEP es una comunidad educativa de personas unidas por objetivos comunes, lo cual impone responsabilidades y derechos recíprocos. La actuación de los miembros de la comunidad académica se basará en relaciones armónicas fundamentadas en el respeto al otro y en la mutua confianza."},
+  {t:"Flexibilidad", d:"UNINTEP asume la flexibilidad, en sus diferentes expresiones académica, curricular, pedagógica y administrativa, como un proceso cambiante que exige permanentes transformaciones de acuerdo a las necesidades del contexto, para llevar adelante los propósitos de la formación integral de profesionales altamente capacitados."},
+  {t:"Pertinencia", d:"UNINTEP considera la pertinencia como la concordancia entre las finalidades, metas, principios y objetivos del referencial de formación con el referencial laboral surgido de las necesidades del entorno."},
+  {t:"Responsabilidad social", d:"UNINTEP hace parte de la comunidad y, por tanto, debe asumir los compromisos que le competen a todos sus integrantes y contribuir en la medida de sus posibilidades a apoyarlos en el mejoramiento de su calidad de vida."},
+  {t:"Autogestión – Autonomía", d:"Entendida como la autodeterminación en los asuntos del ordenamiento interno: académico, legal y administrativo."},
+  {t:"Calidad e Investigación permanentes", d:"UNINTEP, dentro de la cultura organizacional, promueve la calidad, entendida como una cualidad que permite implementar y evaluar los procesos, métodos, instrumentos y logros de la institución de acuerdo a estándares e indicadores internos y externos, posibilitando el mejoramiento continuo que exige una permanente dinámica de formación académica, investigativa e innovadora para afrontar los cambios del mundo."},
+  {t:"Trascendencia institucional", d:"UNINTEP busca alcanzar niveles superiores de desarrollo que le permitan permanecer en la conciencia colectiva de la comunidad local, regional, nacional e internacional."}
 ];
 
 const valores = [
-  {t:"Compromiso", d:"Expresado en la importancia del rol que desempeñan los servidores públicos, y en la disposición permanente para comprender y resolver las necesidades de las personas, con las que se relacionan en las labores cotidianas, buscando el mejoramiento de su bienestar."},
-  {t:"Diligencia", d:"Expresada desde la forma en que se cumple con los deberes, funciones y responsabilidades de los diferentes cargos, de la mejor manera posible, con atención, prontitud y eficiencia, para optimizar el uso de los recursos del estado."},
   {t:"Honestidad", d:"Expresada en la coherencia entre las acciones y los requerimientos éticos, sociales y organizacionales promulgados por la comunidad educativa."},
-  {t:"Justicia", d:"Expresada desde la forma en que se actúa con imparcialidad garantizando el derecho de las personas con equidad, igualdad y sin discriminación."},
-  {t:"Liderazgo", d:"Expresado en la capacidad de convocar y desarrollar fuerzas positivas, lo cual permite ser más competitivos."},
-  {t:"Respeto", d:"Expresado como el reconocimiento y trato de manera digna a todas las personas, con aceptación de las diferencias."}
+  {t:"Respeto", d:"Comprendido como el valor universal que garantiza la convivencia y la aceptación de las diferencias entre los miembros de la comunidad académica y educativa."},
+  {t:"Compromiso", d:"Expresado en actividades desarrolladas por diferentes personas que aportan desde sus potencialidades y se comprometen al objetivo común de manera coordinada y articulada."},
+  {t:"Diligencia", d:"Expresada en el cumplimiento de los deberes, funciones y responsabilidades asignadas de la mejor manera posible, con atención, prontitud y eficiencia, para así optimizar el uso de los recursos del Estado."},
+  {t:"Justicia", d:"Comprendida como la actuación con imparcialidad garantizando los derechos de las personas, con equidad, igualdad y sin discriminación."},
+  {t:"Liderazgo", d:"Expresado en la capacidad de convocar y desarrollar las capacidades y potencialidades propias y de otros, lo cual permite ser más autónomos y autogestionarios."},
+  {t:"Sentido de pertenencia", d:"Expresada en el reconocimiento del propio entorno como patrimonio común, con el cual hay que comprometerse. Promueve el reconocimiento de los bienes colectivos como propios, conservándolos, reconstruyéndolos y colaborando con su desarrollo."}
 ];
 
 // ---------- ICONOS SVG (sustituyen los emojis genéricos) ----------
